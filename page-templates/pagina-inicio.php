@@ -1,0 +1,137 @@
+<?php /* Template Name: Pagina de inicio */ ?>
+
+<?php get_header(); ?>
+<main class="wrap">
+
+<?php
+     $text = get_theme_mod('campo_texto_es');
+     $textarea=get_theme_mod('campo_textarea');
+     $image=get_theme_mod('image_control_one');
+     $enlace=get_theme_mod('campo_texto_url');
+     
+     $text2 = get_theme_mod('campo_texto_2');
+     $textarea2=get_theme_mod('campo_textarea_2');
+     $image2=get_theme_mod('image_control_two');
+     $enlace2=get_theme_mod('campo_texto_url_2');
+     
+     $text3 = get_theme_mod('campo_texto_3');
+     $textarea3=get_theme_mod('campo_textarea_3');
+     $image3=get_theme_mod('image_control_third');
+     $enlace3=get_theme_mod('campo_texto_url_3');
+     
+     $titulo_seccion=get_option('title_posts');
+     $numero_entradas=get_option('number_posts');
+     $enlace_vertodas=get_option('button');
+    
+    if ( ! function_exists( 'is_plugin_active' ) )
+     require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+
+if ( is_plugin_active( 'polylang/polylang.php' ) )
+ $currentlang =pll_current_language() ;
+ 
+    if (empty($currentlang)) 
+    { $currentlang = "es";} 
+?>
+
+
+
+<div id="info-full">
+<div id="info">
+		
+			<div class="columnas-info first">
+						<a href="<?php echo get_theme_mod('campo_texto_url_'.$currentlang); ?>" >
+						<div class="content-box">
+								 <div class="icon">
+						       			<img src="<?php echo get_theme_mod('image_control_one_'.$currentlang);  ?>">
+						       </div>
+								<div class="content-box-info">
+										<h2><?php echo get_theme_mod('campo_texto_'.$currentlang);  ?></h2>
+								 		<span><?php echo get_theme_mod('campo_textarea_'.$currentlang);  ?></span>
+								</div>
+						</div>
+						</a>
+			</div>
+			
+			<div class="columnas-info">
+						<a href="<?php echo get_theme_mod('campo_texto_url_2_'.$currentlang); ?>" >
+						<div class="content-box">
+						       <div class="icon">
+						       				<img src="<?php echo get_theme_mod('image_control_two_'.$currentlang);  ?>">
+						       </div>
+								<div class="content-box-info">
+										<h2><?php echo get_theme_mod('campo_texto_2_'.$currentlang); ?></h2>
+								 		<span><?php echo get_theme_mod('campo_textarea_2_'.$currentlang);  ?></span>
+								</div>
+						</div>
+			</div>
+			<div class="columnas-info">
+						<a href="<?php echo get_theme_mod('campo_texto_url_3_'.$currentlang); ?>" >
+						<div class="content-box">
+								 <div class="icon">
+						       			<img src="<?php echo get_theme_mod('image_control_third_'.$currentlang);  ?>">
+						       </div>
+								<div class="content-box-info">
+										<h2><?php echo get_theme_mod('campo_texto_3_'.$currentlang); ?></h2>
+								 		<span><?php echo get_theme_mod('campo_textarea_3_'.$currentlang);  ?></span>
+								</div>
+						</div>
+			</div>	
+		</div>
+</div>
+  <section id="last-entries" class="content-area content-full-width">
+ <?php //if (isset($titulo_seccion) && !empty($titulo_seccion)) {
+  ?> <h1 class="title_section"><?php echo get_theme_mod('title_posts_'.$currentlang);  ?></h1>
+
+<?php //} ?>
+ 	
+  <?php
+  // the query
+$wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>$numero_entradas)); 
+if ( $wpb_all_query->have_posts() )  :while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?> 
+      <article class="article-loop">        
+
+          <div class="imagen-destacada">
+          
+          <?php if ( has_post_thumbnail() ) : ?>
+    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+        <?php the_post_thumbnail( array(460, 230)); ?>
+    </a>
+<?php endif; ?>
+          </div>
+          <div class="destacada-contenido">
+            <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+           <p class="meta-info"> <i class="far fa-clock"> </i> <?php the_date(); ?>
+          <i class="far fa-user"> </i> <?php the_author(); ?></p>
+        <?php the_excerpt(); ?>
+        <?php if ($currentlang == "es") {?>
+        				<p class="leer-mas"><a class="mas" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php _e('Leer mas','elkartepress');?></a></p>
+        	<?php } elseif($currentlang == "eu") { ?>
+        				<p class="leer-mas"><a class="mas" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php _e('Gehiago irakurtzea','elkartepress');?></a></p>
+        	<?php } elseif($currentlang == "en") { ?>
+        				<p class="leer-mas"><a class="mas" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php _e('Read more','elkartepress');?></a></p>
+        	<?php } ?>
+        </div>
+
+      </article>
+        <div class="clear"></div>
+<?php endwhile; else : ?>
+      <article>
+        <p>Sorry, no posts were found!</p>
+      </article>
+<?php endif; ?>
+
+<?php 
+
+ 
+$link_blog= get_theme_mod('bblink_'.$currentlang);
+if ($currentlang == "es") {
+	?>
+		<p class="ver-todas"><a class="todas" href="<?php echo $link_blog; ?>" ><?php _e('Ver todas','elkartepress');?></a></p>
+<?php } elseif($currentlang == "eu") { ?>
+		<p class="ver-todas"><a class="todas" href="<?php echo $link_blog; ?>" ><?php _e('Guztiak ikustea','elkartepress');?></a></p>
+<?php } elseif($currentlang == "en") { ?>
+		<p class="ver-todas"><a class="todas" href="<?php echo $link_blog; ?>" ><?php _e('See all','elkartepress');?>See all</a></p>
+ <?php } ?>	 
+  </section>
+</main>
+<?php get_footer(); ?>
