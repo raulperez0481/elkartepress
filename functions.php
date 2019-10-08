@@ -219,6 +219,26 @@ add_action( 'init', 'add_Main_Nav' );
 //Shortcodes en widgets de texto
 add_filter('widget_text', 'do_shortcode');
 
+function get_breadcrumb() {
+    echo '<a href="'.home_url().'" rel="nofollow">Inicio</a>';
+    if (is_category() || is_single()) {
+        echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
+        the_category(' &bull; ');
+            if (is_single()) {
+                echo " &nbsp;&nbsp;&#187;&nbsp;&nbsp; ";
+                the_title();
+            }
+    } elseif (is_page()) {
+        echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
+        echo the_title();
+    } elseif (is_search()) {
+        echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;Search Results for... ";
+        echo '"<em>';
+        echo the_search_query();
+        echo '</em>"';
+    }
+}
+
 
 
 
