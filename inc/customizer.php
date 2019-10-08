@@ -913,7 +913,7 @@ h1, h2, h2.page-title, h2.post-title,  footer h3{
 }
  
 /* links color */
-a:link, a:visited, .content-area h1.title_section  { 
+a:link, a:visited, .content-area h1.title_section, .breadcrumb a   { 
     color:  <?php echo $link_color; ?>; 
 }
 
