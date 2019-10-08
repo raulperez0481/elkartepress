@@ -18,9 +18,9 @@ if ( is_plugin_active( 'polylang/polylang.php' ) )
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
-  <script src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress/inc/jquery-3.3.1.min.js"></script>
-  <script src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress/inc/responsiveslides.min.js"></script>
-		 <link rel="stylesheet" href="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress/inc/responsiveslides.css">
+  <script src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/inc/jquery-3.3.1.min.js"></script>
+  <script src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/inc/responsiveslides.min.js"></script>
+		 <link rel="stylesheet" href="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/inc/responsiveslides.css">
 
 
   
