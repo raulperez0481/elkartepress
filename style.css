@@ -235,6 +235,24 @@ display: none !important;
 }
 
 
+
+/*BREADCRUMBS*/
+
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+	text-align:center;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+}
+
+
 /*REDES SOCIALES*/
 
 #redes-sociales{
@@ -821,7 +839,6 @@ i.fa-user{
 	margin-bottom: 20px;
 	
 }
-
 
 /* COMENTARIOS*/
 
