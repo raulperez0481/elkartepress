@@ -6,5 +6,3 @@ para ser multilenguaje con el complemento Polylang, con la posibilidad de traduc
 La página de inicio es totalmente personalizable, con la posibilidad de agregar y eliminar secciones. Tiene un encabezado 
 personalizable, diapositiva con textos, imágenes y enlaces, servicios de sección, sección de últimas entradas, pie a cuatro 
 columnas ...
-
-Podéis acceder a la documentación del theme en mi blog en esta URL http://raulperez.tieneblog.net/documentacion-del-wordpress-theme-elkartepress/

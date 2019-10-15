@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 function elkartepress_customize_register( $wp_customize ) {
 	
 	
@@ -13,6 +10,7 @@ Color scheme
 // add the section to contain the settings
 $wp_customize->add_section( 'textcolors' , array(
     'title' =>  'Color Scheme',
+    'priority' => 29,
 ) );
 
 // main color ( site title, h1, h2, h4. h6, widget headings, nav links, footer headings )
@@ -84,7 +82,7 @@ foreach( $txtcolors as $txtcolor ) {
 
 $wp_customize->add_panel( 'my_custom_options', array(
     'title' => __( 'Mis Redes', 'elkartepress' ),
-    'priority' => 160,
+    'priority' => 28,
     'capability' => 'edit_theme_options',
   ));
   
@@ -166,20 +164,20 @@ $wp_customize->add_panel( 'my_custom_options', array(
 Solid background colors
 ***************************************/
 // add the section to contain the settings
-$wp_customize->add_section( 'background' , array(
+/*$wp_customize->add_section( 'background' , array(
     'title' =>  'Solid Backgrounds',
-) );
+) );*/
  
  
 // add the setting for the header background
-$wp_customize->add_setting( 'header-background' ,array(
+/*$wp_customize->add_setting( 'header-background' ,array(
     'type' => 'option',
     'capability' => 'edit_theme_options',
     'sanitize_callback'  => 'esc_attr',
-  ));
+  ));*/
  
 // add the control for the header background
-$wp_customize->add_control( 'header-background', array(
+/*$wp_customize->add_control( 'header-background', array(
     'label'      => 'Add a solid background to the header?',
     'section'    => 'background',
     'settings'   => 'header-background',
@@ -187,18 +185,18 @@ $wp_customize->add_control( 'header-background', array(
     'choices'    => array(
         'header-background-off'   => 'no',
         'header-background-on'  => 'yes',
-) ) );
+) ) );*/
  
  
 // add the setting for the footer background
-$wp_customize->add_setting( 'footer-background' ,array(
+/*$wp_customize->add_setting( 'footer-background' ,array(
     'type' => 'option',
     'capability' => 'edit_theme_options',
     'sanitize_callback'  => 'esc_attr',
-  ));
+  ));*/
  
 // add the control for the footer background
-$wp_customize->add_control( 'footer-background', array(
+/*$wp_customize->add_control( 'footer-background', array(
     'label'      => 'Add a solid background to the footer?',
     'section'    => 'background',
     'settings'   => 'footer-background',
@@ -208,7 +206,7 @@ $wp_customize->add_control( 'footer-background', array(
         'footer-background-on'  => 'yes',
         ) 
     ) 
-);
+);*/
 
 
 /**************************************
@@ -217,6 +215,7 @@ Show title and description
 // add the section to contain the settings
 $wp_customize->add_section( 'title' , array(
     'title' =>  ' Mostrar título y descripcion',
+     'priority' => 23,
 ) );
  
  
@@ -235,55 +234,6 @@ $wp_customize->add_control( 'show-title', array(
 ) ) );
 
 
-/**************************************
-Show services
-***************************************/
-// add the section to contain the settings
-$wp_customize->add_section( 'shservices' , array(
-    'title' =>  ' Mostrar sección servicios',
-) );
- 
- 
-// add the setting for the header background
-$wp_customize->add_setting( 'show-services' );
- 
-// add the control for the header background
-$wp_customize->add_control( 'show-services', array(
-    'label'      => 'Mostrar sección servicios?',
-    'section'    => 'shservices',
-    'settings'   => 'show-services',
-    'type'       => 'radio',
-    'choices'    => array(
-        'show-services-off'   => 'no',
-        'show-services-on'  => 'yes',
-) ) );
-
-
-
-/**************************************
-Show last entries
-***************************************/
-// add the section to contain the settings
-$wp_customize->add_section( 'last-entries' , array(
-    'title' =>  ' Mostrar últimas entradas',
-) );
- 
- 
-// add the setting for the header background
-$wp_customize->add_setting( 'show-lastentries' );
- 
-// add the control for the header background
-$wp_customize->add_control( 'show-lastentries', array(
-    'label'      => 'Mostrar sección últimas entradas?',
-    'section'    => 'last-entries',
-    'settings'   => 'show-lastentries',
-    'type'       => 'radio',
-    'choices'    => array(
-        'show-lastentries-off'   => 'no',
-        'show-lastentries-on'  => 'yes',
-) ) );
-
-
 
 /**************************************
 Show header
@@ -291,6 +241,7 @@ Show header
 // add the section to contain the settings
 $wp_customize->add_section( 'header-img' , array(
     'title' =>  ' Mostrar imagen de cabecera',
+         'priority' => 27,
 ) );
  
  
@@ -311,6 +262,22 @@ $wp_customize->add_control( 'show-header', array(
         'show-header-off'   => 'no',
         'show-header-on'  => 'yes',
 ) ) );
+
+// add the setting for the header background page
+$wp_customize->add_setting( 'show-header-page' );
+ 
+// add the control for the header background
+$wp_customize->add_control( 'show-header-page', array(
+    'label'      => 'Mostrar imagen de cabecera en las paginas que no sean de inicio?',
+     'priority' => 2,
+    'section'    => 'header-img',
+    'settings'   => 'show-header-page',
+    'type'       => 'radio',
+    'choices'    => array(
+        'show-header-page-off'   => 'no',
+        'show-header-page-on'  => 'yes',
+) ) );
+
 
 
 /*if ( ! function_exists( 'is_plugin_active' ) )
@@ -356,9 +323,37 @@ function elkartepress_theme_customize_register( $wp_customize ) {
   $wp_customize->add_panel( 'servicios', array(
     'title' => __( 'Servicios', 'elkartepress' ),
 	'description' => __( 'Aqui podemos mostrar un mensaje', 'elkartepress' ),
-    'priority' => 160,
+    'priority' =>25,
     'capability' => 'edit_theme_options',
+
   ));
+  
+  
+  
+/**************************************
+Show services
+***************************************/
+// add the section to contain the settings
+$wp_customize->add_section( 'sservices' , array(
+    'title' =>  'Mostrar esta sección?',
+        'panel' => 'servicios'
+));
+
+
+// add the setting for the header background
+$wp_customize->add_setting( 'show-services' );
+ 
+// add the control for the header background
+$wp_customize->add_control( 'show-services', array(
+    'label'      => 'Mostrar sección servicios?',
+    'section'    => 'sservices',
+    'settings'   => 'show-services',
+    'type'       => 'radio',
+    'choices'    => array(
+        'show-services-off'   => 'no',
+        'show-services-on'  => 'yes',
+) ) );
+
 
 if ( ! function_exists( 'is_plugin_active' ) )
      require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
@@ -401,7 +396,7 @@ $langs = pll_languages_list();
             'type' => 'theme_mod',
             'capability' => 'edit_theme_options',
              'sanitize_callback'  => 'esc_attr',
-        ) );
+        ));
  
         $wp_customize->add_control('campo_texto_'.$lang, array(
             'label' => __( 'Titulo', 'elkartepress' ) . " " .$lang,
@@ -580,7 +575,7 @@ function last_posts_customize_register($wp_customize) {
 $wp_customize->add_panel( 'entradas', array(
    'title' => __( 'Entradas', 'elkartepress' ),
 	'description' => __( 'Aqui podemos mostrar un mensaje', 'elkartepress' ),
-    'priority' => 25,
+    'priority' => 26,
     'capability' => 'edit_theme_options',
 ) );
 
@@ -591,6 +586,22 @@ $wp_customize->add_panel( 'entradas', array(
 				'priority' => 1,
             'panel' => 'entradas',
         ));
+        
+        // add the setting for the header background
+$wp_customize->add_setting( 'show-lastentries' );
+ 
+// add the control for the header background
+$wp_customize->add_control( 'show-lastentries', array(
+    'label'      => 'Mostrar sección últimas entradas?',
+    'section'    => 'ultimas_entradas',
+    'priority' => 1,
+    'settings'   => 'show-lastentries',
+    'type'       => 'radio',
+    'choices'    => array(
+        'show-lastentries-off'   => 'no',
+        'show-lastentries-on'  => 'yes',
+) ) );
+
 
 if ( ! function_exists( 'is_plugin_active' ) )
      require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
@@ -656,7 +667,8 @@ function slide_customize_register($wp_customize) {
 
 $wp_customize->add_section( 'slides', array(
     'title'          => 'Slides',
-    'priority'       => 25,
+    'description' => 'Las imágenes del slide tienen una altura maxima de 600px, el sobrante será recortado',
+    'priority'       => 24,
 ) );
 
 
@@ -669,7 +681,7 @@ $wp_customize->add_setting( 'mostrar-slide' ,array(
  
 // add the control for the header background
 $wp_customize->add_control( 'mostrar-slide', array(
-    'label'      => 'Mostrar el Slide?',
+    'label'      => 'Mostrar el slide en la página de inicio?',
      'priority' => 1,
     'section'    => 'slides',
     'settings'   => 'mostrar-slide',
@@ -678,6 +690,24 @@ $wp_customize->add_control( 'mostrar-slide', array(
      'show-slide-off'   => 'no',
      'show-slide-on'  => 'yes',
 ) ) );
+
+// add the setting for the header background
+$wp_customize->add_setting( 'show-slideblog' );
+ 
+// add the control for the header background
+$wp_customize->add_control( 'show-slideblog', array(
+    'label'      => 'Mostrar el slide en la página de entradas?',
+     'priority' => 2,
+    'section'    => 'slides',
+    'settings'   => 'show-slideblog',
+    'type'       => 'radio',
+    'choices'    => array(
+        'show-slideblog-off'   => 'no',
+        'show-slideblog-on'  => 'yes',
+) ) );
+
+
+
 
 
 if ( ! function_exists( 'is_plugin_active' ) )
@@ -699,8 +729,8 @@ $wp_customize->add_setting( 'first_slide', array(
 
 $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'first_slide', array(
     'label'   => 'Imagen slide 1',
+        'priority' => 3,
     'section' => 'slides',
-    'priority' => 4,
     'settings'   => 'first_slide',
 ) ) );
 
@@ -714,7 +744,7 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'firs
   $wp_customize->add_control('first_slide_text_'.$lang, array(
     'label' => __( 'Texto slide 1', 'elkartepress' ) . " " . strtoupper($lang),
     'section' => 'slides',
-    'priority' => 1,
+    'priority' => 3,
     'type' => 'text',
   ));
   
@@ -727,7 +757,7 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'firs
   $wp_customize->add_control('first_slide_link_'.$lang, array(
     'label' => __( 'Enlace Titulo 1', 'elkartepress' ). " " . strtoupper($lang),
     'section' => 'slides',
-    'priority' => 2,
+    'priority' => 3,
     'type' => 'text',
   ));
   
@@ -757,8 +787,8 @@ $wp_customize->add_setting( 'second_slide', array(
 
 $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'second_slide', array(
     'label'   => 'Imagen slide 2',
+        'priority' => 4,
     'section' => 'slides',
-    'priority' => 8,
     'settings'   => 'second_slide',
 ) ) );
 
@@ -771,7 +801,7 @@ $wp_customize->add_setting( 'second_slide_text_'.$lang, array(
   $wp_customize->add_control('second_slide_text_'.$lang, array(
     'label' => __( 'Texto slide 2', 'elkartepress' ). " " . strtoupper($lang),
     'section' => 'slides',
-    'priority' => 5,
+    'priority' => 4,
     'type' => 'text',
   ));
   
@@ -784,7 +814,7 @@ $wp_customize->add_setting( 'second_slide_text_'.$lang, array(
   $wp_customize->add_control('second_slide_link_'.$lang, array(
     'label' => __( 'Enlace Titulo 2', 'elkartepress' ). " " . strtoupper($lang),
     'section' => 'slides',
-    'priority' => 5,
+    'priority' => 4,
     'type' => 'text',
   ));
   
@@ -797,7 +827,7 @@ $wp_customize->add_setting( 'second_slide_text_'.$lang, array(
   $wp_customize->add_control('second_slide_area_'.$lang, array(
     'label' => __( 'Area 2', 'elkartepress' ). " " . strtoupper($lang),
     'section' => 'slides',
-    'priority' => 7,
+    'priority' => 4,
     'type' => 'textarea',
   ));
 
@@ -812,7 +842,7 @@ $wp_customize->add_setting( 'third_slide', array(
 $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'third_slide', array(
     'label'   => 'Imagen slide 3',
     'section' => 'slides',
-    'priority' => 12,
+    'priority' => 5,
     'settings'   => 'third_slide',
 ) ) );
 
@@ -825,7 +855,7 @@ $wp_customize->add_setting( 'third_slide_text_'.$lang, array(
   $wp_customize->add_control('third_slide_text_'.$lang, array(
     'label' => __( 'Texto slide 3', 'elkartepress' ). " " . strtoupper($lang),
     'section' => 'slides',
-    'priority' => 9,
+    'priority' => 5,
     'type' => 'text',
   ));
   
@@ -838,7 +868,7 @@ $wp_customize->add_setting( 'third_slide_text_'.$lang, array(
   $wp_customize->add_control('third_slide_link_'.$lang, array(
     'label' => __( 'Enlace Titulo 3', 'elkartepress' ). " " . strtoupper($lang),
     'section' => 'slides',
-    'priority' => 10,
+    'priority' => 5,
     'type' => 'text',
   ));
   
@@ -851,7 +881,7 @@ $wp_customize->add_setting( 'third_slide_text_'.$lang, array(
   $wp_customize->add_control('third_slide_area_'.$lang, array(
     'label' => __( 'Area 3', 'elkartepress' ). " " . strtoupper($lang),
     'section' => 'slides',
-    'priority' => 11,
+    'priority' => 5,
     'type' => 'textarea',
   ));
 
@@ -1002,11 +1032,25 @@ display: none;
 
 }
 
+.show-slideblog-off #slidehome{
+
+display: none;
+
+}
+
 .show-lastentries-off #last-entries{
 
 display: none;
 
 }
+
+
+.show-header-page-off img.header-img-page{
+
+display: none;
+}
+
+.show-lastentries-off #last-entries{
  
 </style>
      
@@ -1084,6 +1128,31 @@ function wpcustom_show_header( $classes ) {
      
 }
 add_filter('body_class', 'wpcustom_show_header');
+
+function wpcustom_show_slideblog( $classes ) {
+ 
+    // set the slide blog page
+    $show_slideblog = get_theme_mod( 'show-slideblog' );
+    $classes[] = $show_slideblog;
+     
+   
+     
+    return $classes;
+     
+}
+add_filter('body_class', 'wpcustom_show_slideblog');
+
+function wpcustom_show_headerpage( $classes ) {
+ 
+    // set the slide blog page
+    $show_headerpage = get_theme_mod( 'show-header-page' );
+    $classes[] = $show_headerpage;
+     
+       
+    return $classes;
+     
+}
+add_filter('body_class', 'wpcustom_show_headerpage');
 
 
 function wptutsplus_add_background_color_style( $classes ) {

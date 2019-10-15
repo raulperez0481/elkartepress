@@ -75,19 +75,19 @@ $link_slide_2=get_option('second_slide_link_'.$currentlang);
 $link_slide_3=get_option('third_slide_link_'.$currentlang);
 
 if (isset($facebook) && !empty($facebook)) {
-  ?> <div id="icono-social"><a href="<?php echo get_option('my_facebook_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress/images/facebook-grey.png" alt="Facebook"></a></div>
+  ?> <div id="icono-social"><a href="<?php echo get_option('my_facebook_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/images/facebook-grey.png" alt="Facebook"></a></div>
 <?php } ?>
 
 <?php if (isset($twitter) && !empty($twitter)) {
-  ?> <div id="icono-social"><a href="<?php echo get_option('my_twitter_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress/images/twitter-grey.png" alt="Twitter"></a></div>
+  ?> <div id="icono-social"><a href="<?php echo get_option('my_twitter_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/images/twitter-grey.png" alt="Twitter"></a></div>
 <?php } ?>
 
 <?php if (isset($youtube) && !empty($youtube)) {
-  ?> <div id="icono-social"><a href="<?php echo get_option('my_youtube_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress/images/youtube-grey.png" alt="Youtube"></a></div>
+  ?> <div id="icono-social"><a href="<?php echo get_option('my_youtube_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/images/youtube-grey.png" alt="Youtube"></a></div>
 <?php } ?>
 
 <?php if (isset($instagram) && !empty($instagram)) {
-  ?> <div id="icono-social"><a href="<?php echo get_option('my_instagram_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress/images/instagram-grey.png" alt="Instagram"></a></div>
+  ?> <div id="icono-social"><a href="<?php echo get_option('my_instagram_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/images/instagram-grey.png" alt="Instagram"></a></div>
 <?php } ?>
 </div>
 <nav id="site-navigation" class="main-navigation">
@@ -101,10 +101,18 @@ if (isset($facebook) && !empty($facebook)) {
 </nav>
 	
  </header>
+          <?php if (is_front_page() ) {?>
    <img class="header-img" alt="" src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" />
-         <?php if ( is_home() || is_front_page() ) { ?>
-
-<div id="slide" class="callbacks_container"> 
+   		<?php }else{?>
+   		   <img class="header-img-page" alt="" src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" />
+   		
+   		   		<?php }?>
+         <?php if ( is_home() || is_front_page() ) {
+         	if ( is_home()){ ?>
+					<div id="slidehome" class="callbacks_container"> 
+			<?php }else{?>
+					<div id="slide" class="callbacks_container"> 
+					<?php }?>
   <ul class="rslides" id="slider4">
       <?php  if(get_option('first_slide')  != '') {?>
     <li>

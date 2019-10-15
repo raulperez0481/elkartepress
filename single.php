@@ -10,7 +10,7 @@
     	<div id="primario">
        <?php the_content(); 
        	the_tags();
-			comment_form();
+			//comment_form();
        if ( comments_open() || get_comments_number() ) :
                 comments_template();
                 
