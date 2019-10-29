@@ -1,6 +1,6 @@
 <?php 
 $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
-
+$theme_name = get_template();
 if ( ! function_exists( 'is_plugin_active' ) )
      require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
@@ -9,6 +9,8 @@ if ( is_plugin_active( 'polylang/polylang.php' ) )
  
     if (empty($currentlang)) 
     { $currentlang = "es";} 
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +20,9 @@ if ( is_plugin_active( 'polylang/polylang.php' ) )
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
-  <script src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/inc/jquery-3.3.1.min.js"></script>
-  <script src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/inc/responsiveslides.min.js"></script>
-		 <link rel="stylesheet" href="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/inc/responsiveslides.css">
+  <script src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/<?php echo $theme_name; ?>/inc/jquery-3.3.1.min.js"></script>
+  <script src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/<?php echo $theme_name; ?>/inc/responsiveslides.min.js"></script>
+		 <link rel="stylesheet" href="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/<?php echo $theme_name; ?>/inc/responsiveslides.css">
 
 
   
@@ -75,19 +77,19 @@ $link_slide_2=get_option('second_slide_link_'.$currentlang);
 $link_slide_3=get_option('third_slide_link_'.$currentlang);
 
 if (isset($facebook) && !empty($facebook)) {
-  ?> <div id="icono-social"><a href="<?php echo get_option('my_facebook_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/images/facebook-grey.png" alt="Facebook"></a></div>
+  ?> <div id="icono-social"><a href="<?php echo get_option('my_facebook_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/<?php echo $theme_name; ?>/images/facebook-grey.png" alt="Facebook"></a></div>
 <?php } ?>
 
 <?php if (isset($twitter) && !empty($twitter)) {
-  ?> <div id="icono-social"><a href="<?php echo get_option('my_twitter_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/images/twitter-grey.png" alt="Twitter"></a></div>
+  ?> <div id="icono-social"><a href="<?php echo get_option('my_twitter_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/<?php echo $theme_name; ?>/images/twitter-grey.png" alt="Twitter"></a></div>
 <?php } ?>
 
 <?php if (isset($youtube) && !empty($youtube)) {
-  ?> <div id="icono-social"><a href="<?php echo get_option('my_youtube_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/images/youtube-grey.png" alt="Youtube"></a></div>
+  ?> <div id="icono-social"><a href="<?php echo get_option('my_youtube_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/<?php echo $theme_name; ?>/images/youtube-grey.png" alt="Youtube"></a></div>
 <?php } ?>
 
 <?php if (isset($instagram) && !empty($instagram)) {
-  ?> <div id="icono-social"><a href="<?php echo get_option('my_instagram_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/elkartepress-master/images/instagram-grey.png" alt="Instagram"></a></div>
+  ?> <div id="icono-social"><a href="<?php echo get_option('my_instagram_url');?>" target="_blank"><img src="<?php echo $protocol.$_SERVER['SERVER_NAME']; ?>/wp-content/themes/<?php echo $theme_name; ?>/images/instagram-grey.png" alt="Instagram"></a></div>
 <?php } ?>
 </div>
 <nav id="site-navigation" class="main-navigation">
