@@ -16,7 +16,7 @@ $wp_customize->add_section( 'textcolors' , array(
 // main color ( site title, h1, h2, h4. h6, widget headings, nav links, footer headings )
 $txtcolors[] = array(
     'slug'=>'color_scheme_1', 
-    'default' => '#000',
+    'default' => 'white',
     'label' => 'Fondo cabecera'
 );
  
@@ -32,6 +32,13 @@ $txtcolors[] = array(
     'slug'=>'color_scheme_3', 
     'default' => '#666',
     'label' => 'Titulos'
+);
+
+//title
+ $txtcolors[] = array(
+    'slug'=>'color_scheme_4', 
+    'default' => 'white',
+    'label' => 'body'
 );
   
 // link color
@@ -818,6 +825,7 @@ $wp_customize->add_setting( 'second_slide_text_'.$lang, array(
     'type' => 'text',
   ));
   
+  
   $wp_customize->add_setting( 'second_slide_area_'.$lang, array(
     'type' => 'option',
     'capability' => 'edit_theme_options',
@@ -904,6 +912,10 @@ $color_scheme_2 = get_option( 'color_scheme_2' );
 
 // title color
 $color_scheme_3 = get_option( 'color_scheme_3' );
+
+//body background
+$color_scheme_4 = get_option( 'color_scheme_4' );
+
  
 // link color
 $link_color = get_option( 'link_color' );
@@ -921,6 +933,12 @@ styling
  
  
 /* color scheme */
+
+body{
+
+	    background-color: <?php echo $color_scheme_4; ?>;
+
+}
  
 /* title color */
 h1, h2, h2.page-title, h2.post-title,  footer h3{ 
@@ -981,7 +999,7 @@ input[type="reset"], input[type="submit"], input[type="submit"], .pirate-forms-s
 }
  
 /* header */
-.header-background-on .header-wrapper {
+.header-wrapper {
     background-color: <?php echo $color_scheme_1; ?>;
 }
 .header-background-on #site-title a, .header-background-on h1, .header-background-on #site-description, .header-background-on address, .header-background-on header a:link, .header-background-on header a:visited, .header-background-on header a:active, .header-background-on header a:hover {
